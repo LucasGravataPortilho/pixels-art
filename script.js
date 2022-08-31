@@ -24,14 +24,16 @@ function generateColor() {
 
 console.log(generateColor());
 
-// function randomColor() {
-//     let cores = document.querySelectorAll('.color');
-//     let botaoRandom = document.querySelector('#button-random-color');
+function randomColor() {
+    let cores = document.querySelectorAll('.color');
+    let botaoRandom = document.querySelector('#button-random-color');
 
-//     botaoRandom.addEventListener('click', function() {
-//         for(let i = 1; i < cores.length; i += 1) {
-//             cores[i].style.backgroundColor =
-//         }
-//     })
+    botaoRandom.addEventListener('click', function() {
+        for(let i = 1; i < cores.length; i += 1) {
+            cores[i].style.backgroundColor = generateColor()
+        }
+    })
     
-// }
+}
+
+randomColor();
