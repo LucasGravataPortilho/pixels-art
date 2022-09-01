@@ -45,3 +45,9 @@ randomColor();
 
 // keepColor();
 
+function selectedColor() {
+    let corSelecionada = document.querySelector('.color');
+    corSelecionada.classList.add('selected');
+}
+
+selectedColor();
