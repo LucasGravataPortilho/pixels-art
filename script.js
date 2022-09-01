@@ -6,10 +6,13 @@ function colorTask(cor) {
     paleta.appendChild(corNova);
 }
 
+const buscandoCores = localStorage.getItem('colorPalette');
+const trazendoCores = JSON.parse(buscandoCores);
+
 colorTask('black');
-colorTask('blue');
-colorTask('red');
-colorTask('green');
+colorTask(trazendoCores?.corAleatoria || 'blue');
+colorTask(trazendoCores?.corAleatoria2 || 'red');
+colorTask(trazendoCores?.corAleatoria3 || 'green');
 
 function generateColor() {
     const letras = '0123456789ABCDEF';
@@ -22,28 +25,26 @@ function generateColor() {
     return colorzao;
 }
 
-function randomColor() {
+function generateRandomColor() {
     let cores = document.querySelectorAll('.color');
     let botaoRandom = document.querySelector('#button-random-color');
 
     botaoRandom.addEventListener('click', function() {
+        let cores1 = [];
         for (let i = 1; i < cores.length; i += 1) {
-            cores[i].style.backgroundColor = generateColor()
+            const randomColor = generateColor();
+            cores[i].style.backgroundColor = randomColor;
+            cores1.push(randomColor);
         }
+
+        localStorage.setItem('colorPalette', JSON.stringify({corAleatoria: cores1[0], corAleatoria2: cores1[1], corAleatoria3:cores1[2]}));
+
     })
     
 }
 
-randomColor();
+generateRandomColor();
 
-// function keepColor() {
-//     let cores = document.querySelectorAll('.color');
-//     for (let i = 1; i < cores.length; i += 1) {
-//         localStorage.setItem('colorPalette', cores[i].style.backgroundColor);
-//     }
-// }
-
-// keepColor();
 
 function selectedColor() {
     let corSelecionada = document.querySelector('.color');
@@ -51,3 +52,47 @@ function selectedColor() {
 }
 
 selectedColor();
+
+function activeColor() {
+    let selecionada = document.getElementsByClassName('selected');
+    let cores = document.querySelectorAll('.color');
+
+    cores.forEach((cor)=> {
+        cor.addEventListener('click', function(event) {
+            if(selecionada.length === 0) {
+                event.target.classList.add('selected');
+            } else {
+                event.target.className = 'color';
+            }
+        })
+    })
+}
+
+activeColor();
+
+function corNoQuadro() {
+    let corSelecionada = document.getElementsByClassName('selected')[0].style.backgroundColor;
+    let cores = document.querySelectorAll('.color');
+    let pixels = document.querySelectorAll('.pixel');
+    console.log(corSelecionada);
+
+    pixels.forEach((pixel)=> {
+        pixel.addEventListener('click', function(event) {
+            event.target.style.backgroundColor = corSelecionada;
+        })
+    })
+
+}
+
+corNoQuadro();
+
+// if(selecionada.length === 0) {
+//     event.target.classList.add('selected');
+// } else {
+//     event.target.className = 'color';
+// }
+// let styles = window.getComputedStyle(event.target);
+//             console.log(styles.backgroundColor);
+//             console.log(event.target);
+// let corSelecionada = document.querySelector('.color');
+//     corSelecionada.classList.add('selected');
