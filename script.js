@@ -72,7 +72,6 @@ function corNoQuadro() {
     let corSelecionada = document.getElementsByClassName('selected');
     let cores = document.querySelectorAll('.color');
     let pixels = document.querySelectorAll('.pixel');
-    console.log(corSelecionada);
 
     pixels.forEach((pixel)=> {
         pixel.addEventListener('click', function(event) {
@@ -88,13 +87,19 @@ function corNoQuadro() {
 
 corNoQuadro();
 
-// if(selecionada.length === 0) {
-//     event.target.classList.add('selected');
-// } else {
-//     event.target.className = 'color';
-// }
-// let styles = window.getComputedStyle(event.target);
-//             console.log(styles.backgroundColor);
-//             console.log(event.target);
-// let corSelecionada = document.querySelector('.color');
-//     corSelecionada.classList.add('selected');
+function clearPixel() {
+    let pixels = document.querySelectorAll('.pixel');
+    let botaoLimpar = document.getElementById('clear-board');
+    console.log(botaoLimpar);
+
+    botaoLimpar.addEventListener('click', function() {
+        for(let i = 0; i < pixels.length; i += 1) {
+            pixels[i].style.backgroundColor = 'white';
+        }
+    })
+}
+
+clearPixel();
+
+
+
