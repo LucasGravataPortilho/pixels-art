@@ -54,16 +54,14 @@ function selectedColor() {
 selectedColor();
 
 function activeColor() {
-    let selecionada = document.getElementsByClassName('selected');
     let cores = document.querySelectorAll('.color');
+    cores[0].className = 'color selected'
 
     cores.forEach((cor)=> {
-        cor.addEventListener('click', function(event) {
-            if(selecionada.length === 0) {
-                event.target.classList.add('selected');
-            } else {
-                event.target.className = 'color';
-            }
+        cor.addEventListener('click', ({target}) => {
+            let selecionada = document.querySelector('.selected');
+            selecionada.className = 'color';
+            target.className = 'color selected';
         })
     })
 }
@@ -71,14 +69,18 @@ function activeColor() {
 activeColor();
 
 function corNoQuadro() {
-    let corSelecionada = document.getElementsByClassName('selected')[0].style.backgroundColor;
+    let corSelecionada = document.getElementsByClassName('selected');
     let cores = document.querySelectorAll('.color');
     let pixels = document.querySelectorAll('.pixel');
     console.log(corSelecionada);
 
     pixels.forEach((pixel)=> {
         pixel.addEventListener('click', function(event) {
-            event.target.style.backgroundColor = corSelecionada;
+            for(let i = 0; i < cores.length; i += 1) {
+                if(cores[i].classList.contains('selected')) {
+                    event.target.style.backgroundColor = cores[i].style.backgroundColor;
+                }
+            }
         })
     })
 
