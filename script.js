@@ -22,14 +22,12 @@ function generateColor() {
     return colorzao;
 }
 
-console.log(generateColor());
-
 function randomColor() {
     let cores = document.querySelectorAll('.color');
     let botaoRandom = document.querySelector('#button-random-color');
 
     botaoRandom.addEventListener('click', function() {
-        for(let i = 1; i < cores.length; i += 1) {
+        for (let i = 1; i < cores.length; i += 1) {
             cores[i].style.backgroundColor = generateColor()
         }
     })
@@ -37,3 +35,13 @@ function randomColor() {
 }
 
 randomColor();
+
+// function keepColor() {
+//     let cores = document.querySelectorAll('.color');
+//     for (let i = 1; i < cores.length; i += 1) {
+//         localStorage.setItem('colorPalette', cores[i].style.backgroundColor);
+//     }
+// }
+
+// keepColor();
+

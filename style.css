@@ -35,3 +35,19 @@ button {
     height: 45px;
     width: 45px;
   }
+
+  #pixel-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    border-collapse: collapse;
+  }
+
+  .pixel {
+    display: table-cell;
+    background-color: white;
+    width: 41px;
+    height: 41px;
+    border: 1px solid black;
+  }
