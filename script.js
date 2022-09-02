@@ -80,9 +80,9 @@ function corNoQuadro() {
                     event.target.style.backgroundColor = cores[i].style.backgroundColor;
                 }
             }
+            saveDrawing();
         })
     })
-
 }
 
 corNoQuadro();
@@ -90,16 +90,36 @@ corNoQuadro();
 function clearPixel() {
     let pixels = document.querySelectorAll('.pixel');
     let botaoLimpar = document.getElementById('clear-board');
-    console.log(botaoLimpar);
 
     botaoLimpar.addEventListener('click', function() {
         for(let i = 0; i < pixels.length; i += 1) {
             pixels[i].style.backgroundColor = 'white';
         }
+        saveDrawing();
     })
 }
 
 clearPixel();
+
+function saveDrawing() {
+    let pixels = document.querySelectorAll('.pixel');
+    let pixelsArray = [...pixels];
+    let colors = [];
+    let colorsWhite = [];
+    colors = pixelsArray.map(pixel => {
+        return pixel.style.backgroundColor;
+    })
+    localStorage.setItem('pixelBoard', JSON.stringify({colors:colors}));
+
+    if(clearPixel()) {
+        colorsWhite = pixelsArray.map(pixel => {
+            return pixel.style.backgroundColor = 'white';
+        })
+        localStorage.setItem('pixelBoard', JSON.stringify({colors:colorsWhite}));
+    }
+}
+
+
 
 
 
