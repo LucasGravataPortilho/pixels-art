@@ -68,12 +68,6 @@ function activeColor() {
 
 activeColor();
 
-// function salvarCores() {
-//     const getColors = localStorage.getItem('pixelBoard');
-//     const coresSalvasQuadro = JSON.parse(getColors);
-//     return coresSalvasQuadro;
-// }
-
 function corNoQuadro() {
     let cores = document.querySelectorAll('.color');
     let pixels = document.querySelectorAll('.pixel');
