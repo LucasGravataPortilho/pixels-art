@@ -68,12 +68,20 @@ function activeColor() {
 
 activeColor();
 
+// function salvarCores() {
+//     const getColors = localStorage.getItem('pixelBoard');
+//     const coresSalvasQuadro = JSON.parse(getColors);
+//     return coresSalvasQuadro;
+// }
+
 function corNoQuadro() {
-    let corSelecionada = document.getElementsByClassName('selected');
     let cores = document.querySelectorAll('.color');
     let pixels = document.querySelectorAll('.pixel');
+    const getColors = localStorage.getItem('pixelBoard');
+    const coresSalvasQuadro = JSON.parse(getColors);
 
-    pixels.forEach((pixel)=> {
+    pixels.forEach((pixel, index)=> {
+        pixel.style.backgroundColor = coresSalvasQuadro?.colors[index] || 'white';
         pixel.addEventListener('click', function(event) {
             for(let i = 0; i < cores.length; i += 1) {
                 if(cores[i].classList.contains('selected')) {
@@ -118,10 +126,4 @@ function saveDrawing() {
         localStorage.setItem('pixelBoard', JSON.stringify({colors:colorsWhite}));
     }
 }
-
-
-
-
-
-
 
