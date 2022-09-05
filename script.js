@@ -10,9 +10,9 @@ const buscandoCores = localStorage.getItem('colorPalette');
 const trazendoCores = JSON.parse(buscandoCores);
 
 colorTask('black');
-colorTask(trazendoCores?.corAleatoria || 'blue');
-colorTask(trazendoCores?.corAleatoria2 || 'red');
-colorTask(trazendoCores?.corAleatoria3 || 'green');
+colorTask(buscandoCores !== null ? trazendoCores['corAleatoria'] : 'blue');
+colorTask(buscandoCores !== null ? trazendoCores['corAleatoria2'] : 'red');
+colorTask(buscandoCores !== null ? trazendoCores['corAleatoria3'] : 'green');
 
 function generateColor() {
     const letras = '0123456789ABCDEF';
@@ -28,7 +28,10 @@ function generateColor() {
 function generateRandomColor() {
     let cores = document.querySelectorAll('.color');
     let botaoRandom = document.querySelector('#button-random-color');
-    localStorage.setItem('colorPalette', JSON.stringify({corAleatoria: 'blue', corAleatoria2: 'red', corAleatoria3: 'green'}));
+
+    if(localStorage.getItem('colorPalette') === null) {
+        localStorage.setItem('colorPalette', JSON.stringify({corAleatoria: 'blue', corAleatoria2: 'red', corAleatoria3: 'green'}));
+    }
 
     botaoRandom.addEventListener('click', function() {
         let cores1 = [];
@@ -135,3 +138,10 @@ saveDrawing();
 
 //     })
 // }
+
+// colorTask(trazendoCores?.corAleatoria || 'blue');
+// colorTask(trazendoCores?.corAleatoria2 || 'red');
+// colorTask(trazendoCores?.corAleatoria3 || 'green');
+// colorTask(buscandoCores !== null ? trazendoCores.corAleatoria : 'blue');
+// colorTask(buscandoCores !== null ? trazendoCores.corAleatoria2 : 'red');
+// colorTask(buscandoCores !== null ? trazendoCores.corAleatoria3 : 'green');
