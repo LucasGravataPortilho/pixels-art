@@ -16,7 +16,7 @@ colorTask(trazendoCores?.corAleatoria3 || 'green');
 
 function generateColor() {
     const letras = '0123456789ABCDEF';
-    let colorzao = '#'
+    let colorzao = '#';
 
     for (let x = 0; x < 6; x += 1) {
         colorzao += letras[Math.floor(Math.random() * 16)];
@@ -28,6 +28,7 @@ function generateColor() {
 function generateRandomColor() {
     let cores = document.querySelectorAll('.color');
     let botaoRandom = document.querySelector('#button-random-color');
+    localStorage.setItem('colorPalette', JSON.stringify({corAleatoria: 'blue', corAleatoria2: 'red', corAleatoria3: 'green'}));
 
     botaoRandom.addEventListener('click', function() {
         let cores1 = [];
@@ -121,4 +122,16 @@ function saveDrawing() {
     }
 }
 
+saveDrawing();
+
 // -----------------------------------------------
+// function generateMatriz() {
+//     let botaoGerar = document.getElementById('generate-board');
+//     let input = document.getElementById('board-size')
+//     let pixelBoard = document.querySelector('#pixel-board');
+//     let valor = input.value;
+
+//     botaoGerar.addEventListener('click', function() {
+
+//     })
+// }
