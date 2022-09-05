@@ -2,14 +2,21 @@
     text-align: center;
 }
 
+#divInput {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
 body {
   background-color: yellow;
 }
 
 #botoes {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
 }
 
 button {
