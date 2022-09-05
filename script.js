@@ -79,7 +79,11 @@ function corNoQuadro() {
     const coresSalvasQuadro = JSON.parse(getColors);
 
     pixels.forEach((pixel, index)=> {
-        pixel.style.backgroundColor = coresSalvasQuadro?.colors[index] || 'white';
+        if(getColors !== null) {
+            pixel.style.backgroundColor = coresSalvasQuadro.colors[index];
+        } else {
+            pixel.style.backgroundColor = 'white';
+        }
         pixel.addEventListener('click', function(event) {
             for(let i = 0; i < cores.length; i += 1) {
                 if(cores[i].classList.contains('selected')) {
