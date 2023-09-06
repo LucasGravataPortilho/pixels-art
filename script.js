@@ -143,9 +143,3 @@ saveDrawing();
 //     })
 // }
 
-// colorTask(trazendoCores?.corAleatoria || 'blue');
-// colorTask(trazendoCores?.corAleatoria2 || 'red');
-// colorTask(trazendoCores?.corAleatoria3 || 'green');
-// colorTask(buscandoCores !== null ? trazendoCores.corAleatoria : 'blue');
-// colorTask(buscandoCores !== null ? trazendoCores.corAleatoria2 : 'red');
-// colorTask(buscandoCores !== null ? trazendoCores.corAleatoria3 : 'green');
